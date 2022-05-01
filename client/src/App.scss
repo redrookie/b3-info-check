@@ -1,10 +1,8 @@
 .App {
 	text-align: center;
 	.after-message {
-		color: crimson;
-		&.submit-done {
-			color: green;
-		}
+		color: darkgrey;
+		font-family: monospace;
 	}
 	.div__form {
 		position: relative;
@@ -37,13 +35,4 @@
 
 .App-link {
 	color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
 }

@@ -42,9 +42,6 @@ function handleSubmit(e) {
 				console.log("res from backend", res);
 				document.querySelectorAll(".after-message")[0].innerText =
 					"Enviado";
-				document
-					.querySelectorAll(".after-message")[0]
-					.classList.add("submit-done");
 			});
 	}
 }
