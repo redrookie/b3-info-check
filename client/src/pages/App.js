@@ -4,7 +4,7 @@ import { dataMock } from "../mocks.js";
 import InputTextBox from "../Components/InputTextBox/InputTextBox";
 import AssetsForm from "../Components/AssetsForm";
 import InputDate from "../Components/InputDate";
-import InputButton from "../Components/Button/InputButton";
+import InputButton from "../Components/InputButton/InputButton";
 
 function handleSubmit(e) {
 	e.preventDefault();
@@ -16,18 +16,23 @@ function handleSubmit(e) {
 			new Date(String(minDate)).getTime()) /
 		(1000 * 3600 * 24);
 	let outputSizeParam = "compact";
-
-	if (names === "") {
-		document.querySelectorAll(".after-message")[0].innerText =
-			"O campo de nomes não pode ser vazio!";
-		return;
-	}
 	if (difference > 100) outputSizeParam = "full";
 	if (difference < 0 || isNaN(difference)) {
 		document.querySelectorAll(".after-message")[0].innerText =
 			"Erro, datas inválidas!";
 	} else {
-		fetch(`/api`)
+		fetch(`/api`, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				nomes: names,
+				minDate: minDate,
+				maxDate: maxDate,
+				size: outputSizeParam,
+			}),
+			method: "POST",
+		})
 			.then((res) => res.json())
 			.then((res) => {
 				console.log("res from backend", res);
@@ -42,20 +47,7 @@ function handleSubmit(e) {
 
 function App() {
 	const [value, setValue] = useState(null);
-
-	// useEffect(() => {
-	// 	fetch(
-	// 		`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&outputsize=${outputSizeParam}&apikey=0ES12FDPP6C69U6M`
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			setValue("data");
-	// 			console.log("value", data);
-	// 		})
-	// 		.catch((error) => console.log("Erro: ", error));
-	// }, []);
 	const data = dataMock || value;
-	console.log("data", data);
 
 	return (
 		<div className="App">
