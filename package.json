@@ -23,8 +23,10 @@
 	},
 	"homepage": "https://github.com/redrookie/b3-info-check#readme",
 	"devDependencies": {
+		"chart.js": "^3.7.1",
 		"concurrently": "^7.1.0",
 		"node-fetch": "^3.2.4",
+		"react-chartjs-2": "^4.1.0",
 		"sass": "^1.51.0"
 	},
 	"dependencies": {
