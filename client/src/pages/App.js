@@ -18,8 +18,9 @@ function handleSubmit(e) {
 	let outputSizeParam = "compact";
 	if (difference > 100) outputSizeParam = "full";
 	if (difference < 0 || isNaN(difference)) {
-		document.querySelectorAll(".after-message")[0].innerText =
-			"Erro, datas inválidas!";
+		document
+			.querySelectorAll(".error-tooltip__wrapper")[0]
+			.classList.remove("hide");
 	} else {
 		fetch(`/api`, {
 			headers: {
@@ -35,6 +36,9 @@ function handleSubmit(e) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
+				document
+					.querySelectorAll(".error-tooltip__wrapper")[0]
+					.classList.add("hide");
 				console.log("res from backend", res);
 				document.querySelectorAll(".after-message")[0].innerText =
 					"Enviado";
@@ -51,7 +55,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">
+			<div className="div__form">
 				<AssetsForm onSubmit={(e) => handleSubmit(e)}>
 					<InputTextBox value="Digite aqui os ativos"></InputTextBox>
 					<InputDate
@@ -68,6 +72,8 @@ function App() {
 					A API utilizada é gratuita, por isso ela possui um limite de
 					5 chamadas por minuto, ou 500 por dia. ;)
 				</p>
+			</div>
+			<div className="div__graph">
 				<a
 					className="App-link"
 					href="https://reactjs.org"
@@ -76,7 +82,7 @@ function App() {
 				>
 					Learn React
 				</a>
-			</header>
+			</div>
 		</div>
 	);
 }

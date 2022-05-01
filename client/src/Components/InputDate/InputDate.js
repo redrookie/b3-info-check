@@ -7,7 +7,12 @@ const InputDate = ({ value, id }) => {
 			<label htmlFor={id} className="input-date__label">
 				{value}
 			</label>
-			<input className="input-date__input-field" type="date" id={id} />
+			<input
+				required
+				className="input-date__input-field"
+				type="date"
+				id={id}
+			/>
 		</>
 	);
 };

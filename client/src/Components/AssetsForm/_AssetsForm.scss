@@ -1,7 +1,11 @@
 .assets-form__wrapper {
+	display: inline-block;
 	form {
 		height: fit-content;
 		width: min-content;
 		display: grid;
+	}
+	input {
+		margin-bottom: 20px;
 	}
 }

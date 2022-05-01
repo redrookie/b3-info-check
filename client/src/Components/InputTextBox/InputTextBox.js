@@ -1,4 +1,5 @@
 import "./_InputTextBox.scss";
+import PropTypes from "prop-types";
 
 const InputTextBox = ({ value = "" }) => {
 	return (
@@ -14,6 +15,10 @@ const InputTextBox = ({ value = "" }) => {
 			/>
 		</>
 	);
+};
+
+InputTextBox.propTypes = {
+	value: PropTypes.string.isRequired,
 };
 
 export default InputTextBox;
