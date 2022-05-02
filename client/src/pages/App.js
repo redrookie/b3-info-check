@@ -17,8 +17,9 @@ function App() {
 			<div className="div__form">
 				<AssetsForm
 					onSubmit={(e) => {
-						let res = handleSubmit(e);
-						setValue(res);
+						handleSubmit(e).then(function (result) {
+							setValue(result);
+						});
 					}}
 				>
 					<InputTextBox value="Digite aqui o nome dos ativos"></InputTextBox>
