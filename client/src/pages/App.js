@@ -1,67 +1,34 @@
 import "../App.scss";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { dataMock } from "../mocks.js";
 import InputTextBox from "../Components/InputTextBox/InputTextBox";
 import AssetsForm from "../Components/AssetsForm";
 import InputDate from "../Components/InputDate";
 import InputButton from "../Components/InputButton/InputButton";
-
-function handleSubmit(e) {
-	e.preventDefault();
-	const names = document.querySelectorAll("#assets_name")[0].value;
-	const minDate = document.querySelectorAll("#date-min")[0].value;
-	const maxDate = document.querySelectorAll("#date-max")[0].value;
-	const difference =
-		(new Date(String(maxDate)).getTime() -
-			new Date(String(minDate)).getTime()) /
-		(1000 * 3600 * 24);
-	let outputSizeParam = "compact";
-	if (difference > 100) outputSizeParam = "full";
-	if (difference < 0 || isNaN(difference)) {
-		document
-			.querySelectorAll(".error-tooltip__wrapper")[0]
-			.classList.remove("hide");
-	} else {
-		fetch(`/api`, {
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				nomes: names,
-				minDate: minDate,
-				maxDate: maxDate,
-				size: outputSizeParam,
-			}),
-			method: "POST",
-		})
-			.then((res) => res.json())
-			.then((res) => {
-				document
-					.querySelectorAll(".error-tooltip__wrapper")[0]
-					.classList.add("hide");
-				console.log("res from backend", res);
-				document.querySelectorAll(".after-message")[0].innerText =
-					"Enviado";
-			});
-	}
-}
+import handleSubmit from "../modules/handleSubmit";
 
 function App() {
 	const [value, setValue] = useState(null);
 	const data = dataMock || value;
+	console.log("value", value);
 
 	return (
 		<div className="App">
 			<div className="div__form">
-				<AssetsForm onSubmit={(e) => handleSubmit(e)}>
-					<InputTextBox value="Digite aqui os ativos"></InputTextBox>
+				<AssetsForm
+					onSubmit={(e) => {
+						let res = handleSubmit(e);
+						setValue(res);
+					}}
+				>
+					<InputTextBox value="Digite aqui o nome dos ativos"></InputTextBox>
 					<InputDate
 						id="date-min"
-						value="Digite a data mínima"
+						value="Digite a data inicial do período"
 					></InputDate>
 					<InputDate
 						id="date-max"
-						value="Digite a data máxima"
+						value="Digite a data final do período"
 					></InputDate>
 					<InputButton>Send</InputButton>
 				</AssetsForm>

@@ -1,5 +1,8 @@
 .assets-form__wrapper {
-	display: inline-block;
+	display: flex;
+	position: relative;
+	width: 100%;
+	padding: 40px;
 	form {
 		height: fit-content;
 		width: min-content;
@@ -8,10 +11,11 @@
 	input {
 		margin-bottom: 20px;
 		height: 30px;
+		text-transform: uppercase;
 	}
 	label {
 		font-size: 20px;
 		font-family: "Monaco";
-		width: auto;
+		width: max-content;
 	}
 }
