@@ -8,7 +8,7 @@ async function handleSubmit(e) {
 			new Date(String(minDate)).getTime()) /
 		(1000 * 3600 * 24);
 	let outputSizeParam = "compact";
-	if (names.split(" ").length > 5) {
+	if (names.trim().split(" ").length > 5) {
 		document.querySelectorAll(".error-tooltip__text")[0].innerHTML =
 			"Por favor, digite no máximo 5 ativos";
 		document

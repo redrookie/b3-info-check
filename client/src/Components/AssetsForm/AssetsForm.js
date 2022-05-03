@@ -6,7 +6,7 @@ const AssetsForm = ({ children, onSubmit }) => {
 	return (
 		<div className="assets-form__wrapper">
 			<form onSubmit={onSubmit}>{children}</form>
-			<ErrorTooltip>Erro</ErrorTooltip>
+			<ErrorTooltip></ErrorTooltip>
 		</div>
 	);
 };
