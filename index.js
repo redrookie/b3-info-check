@@ -22,7 +22,7 @@ app.post("/api", (req, res) => {
 	// 		console.log("value", data);
 	// 	})
 	// 	.catch((error) => console.log("Erro: ", error));
-	res.json({ message: "Hello from server!" });
+	res.json({ message: "Hello from server!", status: 200 });
 });
 
 app.listen(PORT, () => {

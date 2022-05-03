@@ -9,20 +9,22 @@ async function handleSubmit(e) {
 		(1000 * 3600 * 24);
 	let outputSizeParam = "compact";
 	if (names.trim().split(" ").length > 5) {
-		document.querySelectorAll(".error-tooltip__text")[0].innerHTML =
-			"Por favor, digite no máximo 5 ativos";
-		document
-			.querySelectorAll(".error-tooltip__wrapper")[0]
-			.classList.remove("hide");
+		let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
+			.classList;
+
+		classlist.remove("wrong-date");
+		classlist.add("full-list");
+		classlist.remove("hide");
 		return null;
 	}
 	if (difference > 100) outputSizeParam = "full";
 	else if (difference < 0 || isNaN(difference)) {
-		document.querySelectorAll(".error-tooltip__text")[0].innerHTML =
-			"As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!";
-		document
-			.querySelectorAll(".error-tooltip__wrapper")[0]
-			.classList.remove("hide");
+		let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
+			.classList;
+
+		classlist.remove("full-list");
+		classlist.add("wrong-date");
+		classlist.remove("hide");
 		return null;
 	} else {
 		let response = await fetch(`/api`, {
