@@ -18,7 +18,8 @@ function App() {
 				<AssetsForm
 					onSubmit={(e) => {
 						handleSubmit(e).then(function (result) {
-							setValue(result);
+							//setValue(result);
+							console.log("result", result);
 						});
 					}}
 				>

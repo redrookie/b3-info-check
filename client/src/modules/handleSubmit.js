@@ -8,8 +8,18 @@ async function handleSubmit(e) {
 			new Date(String(minDate)).getTime()) /
 		(1000 * 3600 * 24);
 	let outputSizeParam = "compact";
+	if (names.split(" ").length > 5) {
+		document.querySelectorAll(".error-tooltip__text")[0].innerHTML =
+			"Por favor, digite no máximo 5 ativos";
+		document
+			.querySelectorAll(".error-tooltip__wrapper")[0]
+			.classList.remove("hide");
+		return null;
+	}
 	if (difference > 100) outputSizeParam = "full";
 	else if (difference < 0 || isNaN(difference)) {
+		document.querySelectorAll(".error-tooltip__text")[0].innerHTML =
+			"As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!";
 		document
 			.querySelectorAll(".error-tooltip__wrapper")[0]
 			.classList.remove("hide");

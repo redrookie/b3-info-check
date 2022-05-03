@@ -10,7 +10,7 @@ const ErrorTooltip = ({ text }) => {
 };
 
 ErrorTooltip.propTypes = {
-	text: PropTypes.string.isRequired,
+	text: PropTypes.string,
 };
 
 export default ErrorTooltip;
