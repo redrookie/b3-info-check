@@ -12,7 +12,7 @@ async function handleSubmit(e) {
 	const outputSizeParam = difference > 100 ? "full" : "compact";
 	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
 		.classList;
-	console.log("dif", difference);
+
 	if (names.trim().split(" ").length > 5) {
 		classlist.remove("wrong-date");
 		classlist.add("full-list");

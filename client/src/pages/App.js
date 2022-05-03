@@ -6,6 +6,7 @@ import AssetsForm from "../Components/AssetsForm";
 import InputDate from "../Components/InputDate";
 import InputButton from "../Components/InputButton/InputButton";
 import handleSubmit from "../modules/handleSubmit";
+import Graph from "../Components/Graph/Graph";
 
 function App() {
 	const [value, setValue] = useState(null);
@@ -49,8 +50,9 @@ function App() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					Learn React
+					NATAL COM MISCHA
 				</a>
+				<Graph></Graph>
 			</div>
 		</div>
 	);
