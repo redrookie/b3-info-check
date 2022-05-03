@@ -44,14 +44,6 @@ function App() {
 				</p>
 			</div>
 			<div className="div__graph">
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					NATAL COM MISCHA
-				</a>
 				<Graph></Graph>
 			</div>
 		</div>
