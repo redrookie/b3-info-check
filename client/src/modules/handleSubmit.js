@@ -2,23 +2,23 @@ async function handleSubmit(e) {
 	e.preventDefault();
 
 	const names = document.querySelectorAll("#assets_name")[0].value;
-	const minDate = document.querySelectorAll("#date-min")[0].value;
-	const maxDate = document.querySelectorAll("#date-max")[0].value;
-	const difference =
-		(new Date(String(maxDate)).getTime() -
-			new Date(String(minDate)).getTime()) /
-		(1000 * 3600 * 24);
-	let outputSizeParam = "compact";
+	const minDate = new Date(
+		String(document.querySelectorAll("#date-min")[0].value)
+	).getTime();
+	const maxDate = new Date(
+		String(document.querySelectorAll("#date-max")[0].value)
+	).getTime();
+	const difference = (maxDate - minDate) / (1000 * 3600 * 24);
+	const outputSizeParam = difference > 100 ? "full" : "compact";
 	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
 		.classList;
+	console.log("dif", difference);
 	if (names.trim().split(" ").length > 5) {
 		classlist.remove("wrong-date");
 		classlist.add("full-list");
 		classlist.remove("hide");
 		return null;
-	}
-	if (difference > 100) outputSizeParam = "full";
-	else if (difference < 0 || isNaN(difference)) {
+	} else if (difference < 0 || isNaN(difference)) {
 		classlist.remove("full-list");
 		classlist.add("wrong-date");
 		classlist.remove("hide");

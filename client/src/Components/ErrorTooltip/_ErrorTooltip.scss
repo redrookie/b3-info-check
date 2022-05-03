@@ -21,7 +21,7 @@
 	}
 	&.wrong-date {
 		p:after {
-			content: "As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!";
+			content: "As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial, e lembre-se de não selecionar datas futuras!";
 		}
 	}
 }

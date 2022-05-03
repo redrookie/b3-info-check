@@ -15,14 +15,15 @@ app.post("/api", (req, res) => {
 	const maxDate = req.body.maxDate;
 	const size = req.body.size;
 	// fetch(
-	// 	`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`
+	// 	`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${nomesArray[0]}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`
 	// )
 	// 	.then((res) => res.json())
 	// 	.then((data) => {
-	// 		console.log("value", data);
+	// 		if (data["Error Message"]) res.json({ message: data, status: 500 });
+	// 		else res.json({ message: data, status: 200 });
 	// 	})
-	// 	.catch((error) => console.log("Erro: ", error));
-	res.json({ message: "Hello from server!", status: 200 });
+	// 	.catch((error) => res.json({ message: error, status: 500 }));
+	res.json({ message: "Backend ok!", status: 200 });
 });
 
 app.listen(PORT, () => {

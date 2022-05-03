@@ -10,7 +10,7 @@ import handleSubmit from "../modules/handleSubmit";
 function App() {
 	const [value, setValue] = useState(null);
 	const data = dataMock || value;
-	console.log("value", value);
+	console.log("Value em app.js", value);
 
 	return (
 		<div className="App">
@@ -18,8 +18,11 @@ function App() {
 				<AssetsForm
 					onSubmit={(e) => {
 						handleSubmit(e).then(function (result) {
-							//setValue(result);
-							console.log("result", result);
+							if (result && result.status === 200) {
+								console.log("result", result);
+							} else {
+								console.log("ERRO", result);
+							}
 						});
 					}}
 				>
