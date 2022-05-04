@@ -1,13 +1,13 @@
 .error-tooltip__wrapper {
-	position: relative;
-	left: 25px;
-	top: 93px;
+	position: absolute;
+	left: auto;
+	top: 118px;
 	height: fit-content;
-	max-width: 200px;
+	max-width: 280px;
 	background-color: dimgrey;
 	text-align: center;
-	padding: 10px;
-	font-size: 14px;
+	padding: 5px;
+	font-size: 13px;
 	border-radius: 10px;
 	transition: opacity 0.3s, visibility 0.5s linear;
 	&.hide {
@@ -21,7 +21,7 @@
 	}
 	&.wrong-date {
 		p:after {
-			content: "As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial, e lembre-se de não selecionar datas futuras!";
+			content: "As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!";
 		}
 	}
 }

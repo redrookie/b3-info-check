@@ -36,8 +36,8 @@ function App() {
 						id="date-max"
 						value="Digite a data final do período"
 					></InputDate>
-					<InputButton>Send</InputButton>
 				</AssetsForm>
+				<InputButton></InputButton>
 				<p className="after-message">
 					A API utilizada é gratuita, por isso ela possui um limite de
 					5 chamadas por minuto, ou 500 por dia. ;)

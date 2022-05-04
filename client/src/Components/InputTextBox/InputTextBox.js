@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const InputTextBox = ({ value = "" }) => {
 	return (
-		<>
+		<div className="input-text-box">
 			<label htmlFor="assets_name" className="input-box__label">
 				{value}
 			</label>
@@ -13,7 +13,7 @@ const InputTextBox = ({ value = "" }) => {
 				id="assets_name"
 				required
 			/>
-		</>
+		</div>
 	);
 };
 

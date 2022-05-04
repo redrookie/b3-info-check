@@ -5,7 +5,9 @@ import ErrorTooltip from "../ErrorTooltip";
 const AssetsForm = ({ children, onSubmit }) => {
 	return (
 		<div className="assets-form__wrapper">
-			<form onSubmit={onSubmit}>{children}</form>
+			<form onSubmit={onSubmit} id="assets-form">
+				{children}
+			</form>
 			<ErrorTooltip></ErrorTooltip>
 		</div>
 	);

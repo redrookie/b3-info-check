@@ -1,12 +1,16 @@
 .assets-form__wrapper {
 	display: flex;
 	position: relative;
-	width: 100%;
+	width: auto;
 	padding: 40px;
+	justify-content: center;
 	form {
 		height: fit-content;
-		width: min-content;
+		width: auto;
 		display: grid;
+	}
+	form > * {
+		margin-left: 30px;
 	}
 	input {
 		margin-bottom: 20px;
@@ -17,5 +21,6 @@
 		font-size: 20px;
 		font-family: "Monaco";
 		width: max-content;
+		margin-bottom: 10px;
 	}
 }

@@ -41,13 +41,13 @@ export const data = {
 	datasets: [
 		{
 			label: "Dataset 1",
-			data: [1, 2, 3, 4, 5, 6, 7, 8],
+			data: [1, 2, 3, 4, 5, 6, 7],
 			borderColor: "rgb(255, 99, 132)",
 			backgroundColor: "rgba(255, 99, 132, 0.5)",
 		},
 		{
 			label: "Dataset 2",
-			data: [15, 20, 30, 40, 50, 60, 70, 8],
+			data: [15, 20, 30, 40, 50, 60, 7],
 			borderColor: "rgb(53, 162, 235)",
 			backgroundColor: "rgba(53, 162, 235, 0.5)",
 		},

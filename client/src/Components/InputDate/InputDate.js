@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const InputDate = ({ value, id }) => {
 	return (
-		<>
+		<div className="input-date">
 			<label htmlFor={id} className="input-date__label">
 				{value}
 			</label>
@@ -13,7 +13,7 @@ const InputDate = ({ value, id }) => {
 				type="date"
 				id={id}
 			/>
-		</>
+		</div>
 	);
 };
 
