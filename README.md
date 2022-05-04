@@ -13,12 +13,4 @@ Após instalar o node, as dependências devem ser instaladas executando `npm ins
 
 Para rodar o projeto, execute `npm run dev`, a raiz do projeto. Isso irá executar o backend e o frontend simultaneamente. 
 
-O backend foi escrito es node e express, o frontend em reac e javascript.
-
-### Ajustes e TODO
-Como o projeto ainda está em desenvolvimento, features novas serão adicionadas na lista ao longo do projeto
-- [ ] Separar div do form e do gráfico
-- [ ] Instalar e utilizar lib para a geração do gráfico
-- [ ] Formatar os dados no frontend, para geração do gráfico
-- [ ] Melhorar mensagens de erro no form
-- [ ] Estilizar aplicação
+O backend foi escrito es node e express, o frontend em react e javascript.
