@@ -12,7 +12,6 @@ async function handleSubmit(e) {
 		(new Date().setHours(21) - minDate) / (1000 * 3600 * 24)
 	);
 	const outputSizeParam = difference > 100 ? "full" : "compact";
-	console.log("dif", difference);
 	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
 		.classList;
 
