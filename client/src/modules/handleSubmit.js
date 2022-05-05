@@ -4,12 +4,15 @@ async function handleSubmit(e) {
 	const names = document.querySelectorAll("#assets_name")[0].value;
 	const minDate = new Date(
 		String(document.querySelectorAll("#date-min")[0].value)
-	).getTime();
+	);
 	const maxDate = new Date(
 		String(document.querySelectorAll("#date-max")[0].value)
-	).getTime();
-	const difference = (maxDate - minDate) / (1000 * 3600 * 24);
+	);
+	const difference = Math.floor(
+		(new Date().setHours(21) - minDate) / (1000 * 3600 * 24)
+	);
 	const outputSizeParam = difference > 100 ? "full" : "compact";
+	console.log("dif", difference);
 	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
 		.classList;
 

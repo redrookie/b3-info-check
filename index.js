@@ -20,7 +20,7 @@ app.post("/api", (req, res) => {
 	// )
 	// 	.then((res) => res.json())
 	// 	.then((data) => {
-	// 		if (data["Error Message"]) res.json({ message: data, status: 500 });
+	// 		if (!!data["Error Message"]) res.json({ message: data, status: 500 });
 	// 		else {
 	// 			const minValidDate = findClosestValidDate(minDate, maxDate, data);
 	// 			res.json({ message: data, status: 200 });
