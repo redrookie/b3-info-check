@@ -11,7 +11,7 @@ import Graph from "../Components/Graph/Graph";
 function App() {
 	const [value, setValue] = useState(null);
 	const data = dataMock || value;
-	console.log("Value em app.js", value);
+	console.log("Value em app.js", data);
 
 	return (
 		<div className="App">

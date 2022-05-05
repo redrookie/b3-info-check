@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fetch from "node-fetch";
+import findClosestValidDate from "./modules/findClosestValidDate.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,13 +15,17 @@ app.post("/api", (req, res) => {
 	const minDate = req.body.minDate;
 	const maxDate = req.body.maxDate;
 	const size = req.body.size;
+	const minValidDate = findClosestValidDate(minDate, data);
 	// fetch(
 	// 	`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${nomesArray[0]}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`
 	// )
 	// 	.then((res) => res.json())
 	// 	.then((data) => {
 	// 		if (data["Error Message"]) res.json({ message: data, status: 500 });
-	// 		else res.json({ message: data, status: 200 });
+	// 		else {
+	// 			const minValidDate = findClosestValidDate(minDate, data);
+	// 			res.json({ message: data, status: 200 });
+	// 		}
 	// 	})
 	// 	.catch((error) => res.json({ message: error, status: 500 }));
 	res.json({ message: "Backend ok!", status: 200 });
