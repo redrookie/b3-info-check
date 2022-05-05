@@ -15,7 +15,6 @@ app.post("/api", (req, res) => {
 	const minDate = req.body.minDate;
 	const maxDate = req.body.maxDate;
 	const size = req.body.size;
-	const minValidDate = findClosestValidDate(minDate, data);
 	// fetch(
 	// 	`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${nomesArray[0]}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`
 	// )
@@ -23,7 +22,7 @@ app.post("/api", (req, res) => {
 	// 	.then((data) => {
 	// 		if (data["Error Message"]) res.json({ message: data, status: 500 });
 	// 		else {
-	// 			const minValidDate = findClosestValidDate(minDate, data);
+	// 			const minValidDate = findClosestValidDate(minDate, maxDate, data);
 	// 			res.json({ message: data, status: 200 });
 	// 		}
 	// 	})

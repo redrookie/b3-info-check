@@ -12,6 +12,8 @@ const InputDate = ({ value, id }) => {
 				className="input-date__input-field"
 				type="date"
 				id={id}
+				min="2005-01-03"
+				max={new Date().toISOString().split("T")[0]}
 			/>
 		</div>
 	);
