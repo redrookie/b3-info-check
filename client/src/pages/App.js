@@ -1,6 +1,5 @@
 import "../App.scss";
 import { React, useState } from "react";
-import { dataMock } from "../mocks.js";
 import InputTextBox from "../Components/InputTextBox/InputTextBox";
 import AssetsForm from "../Components/AssetsForm";
 import InputDate from "../Components/InputDate";
@@ -10,8 +9,6 @@ import Graph from "../Components/Graph/Graph";
 
 function App() {
 	const [value, setValue] = useState(null);
-	const data = dataMock || value;
-	console.log("Value em app.js", data);
 
 	return (
 		<div className="App">
@@ -19,10 +16,10 @@ function App() {
 				<AssetsForm
 					onSubmit={(e) => {
 						handleSubmit(e).then(function (result) {
-							if (result && result.status === 200) {
+							if (!!result && result.status === 200) {
 								console.log("result", result);
 							} else {
-								console.log("ERRO", result);
+								console.log("ERRO", result); //Tratar melhor erros (ex: datas de dias não úteis)
 							}
 						});
 					}}

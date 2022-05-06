@@ -1,7 +1,10 @@
 async function handleSubmit(e) {
+	console.log("debug");
 	e.preventDefault();
 
-	const names = document.querySelectorAll("#assets_name")[0].value;
+	const names = document
+		.querySelectorAll("#assets_name")[0]
+		.value.toUpperCase();
 	const minDate = new Date(
 		String(document.querySelectorAll("#date-min")[0].value)
 	);
