@@ -9,17 +9,23 @@ import Graph from "../Components/Graph/Graph";
 import DarkModeSwitch from "../Components/DarkModeSwitch";
 
 function App() {
+	function handleDarkLightMode(e) {
+		setLightMode(!lightMode);
+		let checkbox = document.querySelectorAll(".light-mode-switch")[0];
+		const isChecked = checkbox.checked;
+		e.preventDefault();
+		checkbox.checked = !isChecked;
+	}
+
 	const [value, setValue] = useState(null);
 	const [lightMode, setLightMode] = useState(true);
-	console.log("dark", lightMode);
 
 	return (
 		<div className={`App ${lightMode ? "light-mode" : ""}`}>
 			<DarkModeSwitch
 				isLightMode={lightMode}
 				onClick={(e) => {
-					e.preventDefault();
-					setLightMode(!lightMode);
+					handleDarkLightMode(e);
 				}}
 			></DarkModeSwitch>
 			<div className="div__form">
