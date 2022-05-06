@@ -1,3 +1,4 @@
+//Retorna o subconjunto dos valores no período especificado
 function handleData(minValidDate, maxDate, data) {
 	let auxDate = minValidDate;
 	let resultArray = [];
