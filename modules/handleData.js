@@ -4,7 +4,7 @@ function handleData(minValidDate, maxDate, data) {
 	let resultArray = [];
 	let difference = (maxDate - minValidDate) / (1000 * 24 * 3600);
 	let auxDateString = auxDate.toISOString().split("T")[0];
-	while (difference > 0) {
+	while (difference >= 0) {
 		if (!!data[auxDateString]) {
 			resultArray.push({
 				Date: auxDateString,

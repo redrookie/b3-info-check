@@ -10,11 +10,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/api", (req, res) => {
-	handleRequest(req, res).then((response) => {
-		console.log("response", response);
-		res.json({ data: response });
-	});
+app.post("/api", async (req, res) => {
+	let dataRequest = await handleRequest(req, res);
+	res.json({ data: dataRequest, status: 200 });
 });
 
 app.listen(PORT, () => {

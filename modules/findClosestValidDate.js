@@ -1,4 +1,5 @@
 function findClosestValidDate(minDate, maxDate, data) {
+	if (!data) return null;
 	if (!!data && data.hasOwnProperty(minDate.toISOString().split("T")[0])) {
 		return minDate;
 	}
