@@ -6,12 +6,22 @@ import InputDate from "../Components/InputDate";
 import InputButton from "../Components/InputButton/InputButton";
 import handleSubmit from "../modules/handleSubmit";
 import Graph from "../Components/Graph/Graph";
+import DarkModeSwitch from "../Components/DarkModeSwitch";
 
 function App() {
 	const [value, setValue] = useState(null);
+	const [lightMode, setLightMode] = useState(true);
+	console.log("dark", lightMode);
 
 	return (
-		<div className="App">
+		<div className={`App ${lightMode ? "light-mode" : ""}`}>
+			<DarkModeSwitch
+				isLightMode={lightMode}
+				onClick={(e) => {
+					e.preventDefault();
+					setLightMode(!lightMode);
+				}}
+			></DarkModeSwitch>
 			<div className="div__form">
 				<AssetsForm
 					onSubmit={(e) => {
