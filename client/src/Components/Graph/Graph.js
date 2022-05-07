@@ -34,42 +34,42 @@ const options = {
 	},
 };
 
-// const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-// export const data = {
-// 	labels,
-// 	datasets: [
-// 		{
-// 			label: "Dataset 1",
-// 			data: [1, 2, 3, 4, 5, 6, 7],
-// 			borderColor: "rgb(255, 99, 132)",
-// 			backgroundColor: "rgba(255, 99, 132, 0.5)",
-// 		},
-// 		{
-// 			label: "Dataset 2",
-// 			data: [15, 20, 30, 40, 50, 60, 7],
-// 			borderColor: "rgb(53, 162, 235)",
-// 			backgroundColor: "rgba(53, 162, 235, 0.5)",
-// 		},
-// 	],
-// };
+export const colors = [
+	"rgb(253, 162, 235)",
+	"rgb(249, 18, 18)",
+	"rgb(253, 162, 235)",
+	"rgb(20, 19, 19)",
+	"rgb(255, 255, 255)",
+];
 
 const Graph = ({ value }) => {
 	if (!value || !value.data[0]) return null;
+
 	console.log("cheguei no graph", value);
 	let dates = value.data[0]?.data?.map((date) => {
 		return date["Date"];
 	});
-	let datasets = value.data.map((asset) => {
+	let datasets = value.data?.map((asset, index) => {
 		if (!asset) return null;
+		if (!!asset["message"]) {
+			let classlist = document.querySelectorAll(
+				".error-tooltip__wrapper"
+			)[0];
+			classlist.className = "error-tooltip__wrapper server-error";
+			return null;
+		}
 		return {
 			label: asset.name,
-			data: asset.data.map((value) => {
+			data: asset.data?.map((value) => {
 				return parseFloat(value["Value"]);
 			}),
-			borderColor: "rgb(253, 162, 235)",
-			backgroundColor: "rgba(253, 162, 235, 0.5)",
+			borderColor: colors[index],
+			backgroundColor: colors[index],
 		};
+	});
+	datasets = datasets.filter((elem) => {
+		if (!elem || !elem["label"]) return false;
+		return true;
 	});
 	let data = {
 		labels: dates,

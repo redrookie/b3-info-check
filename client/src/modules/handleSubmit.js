@@ -14,18 +14,13 @@ async function handleSubmit(e) {
 		(new Date().setHours(21) - minDate) / (1000 * 3600 * 24)
 	);
 	const outputSizeParam = difference > 100 ? "full" : "compact";
-	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0]
-		.classList;
+	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0];
 
 	if (names.trim().split(" ").length > 5) {
-		classlist.remove("wrong-date");
-		classlist.add("full-list");
-		classlist.remove("hide");
+		classlist.className = "error-tooltip__wrapper full-list";
 		return null;
 	} else if (difference < 0 || isNaN(difference)) {
-		classlist.remove("full-list");
-		classlist.add("wrong-date");
-		classlist.remove("hide");
+		classlist.className = "error-tooltip__wrapper wrong-date";
 		return null;
 	} else {
 		let response = await fetch(`/api`, {
@@ -42,9 +37,9 @@ async function handleSubmit(e) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				classlist.add("hide");
+				classlist.className += " hide";
 				document.querySelectorAll(".after-message")[0].innerText =
-					"Enviado"; //Voltar depois
+					"Enviado"; //TODO Voltar depois
 				return res;
 			});
 		return response;

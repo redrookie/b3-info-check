@@ -1,6 +1,6 @@
 .error-tooltip__wrapper {
 	position: absolute;
-	left: auto;
+	left: 100px;
 	top: 118px;
 	height: fit-content;
 	max-width: 280px;
@@ -22,6 +22,11 @@
 	&.wrong-date {
 		p:after {
 			content: "As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!";
+		}
+	}
+	&.server-error {
+		p:after {
+			content: "Uma das requisições resultou em um erro do servidor. Provavelmente o limite de requisições foi estourado, aguarde um instante e tente novamente!";
 		}
 	}
 }
