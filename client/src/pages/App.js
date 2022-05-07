@@ -34,6 +34,7 @@ function App() {
 						handleSubmit(e).then(function (result) {
 							if (!!result && result.status === 200) {
 								console.log("result", result);
+								setValue(result);
 							} else {
 								console.log("ERRO", result); //Tratar melhor erros (ex: datas de dias não úteis)
 							}
@@ -57,7 +58,7 @@ function App() {
 				</p>
 			</div>
 			<div className="div__graph">
-				<Graph></Graph>
+				<Graph value={value}></Graph>
 			</div>
 		</div>
 	);

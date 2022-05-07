@@ -11,8 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.post("/api", async (req, res) => {
-	let dataRequest = await handleRequest(req, res);
-	res.json({ data: dataRequest, status: 200 });
+	try {
+		let dataRequest = await handleRequest(req, res);
+		res.json({ data: dataRequest, status: 200 });
+	} catch (err) {
+		res.json({ message: "Erro na requisição", status: 500 });
+	}
 });
 
 app.listen(PORT, () => {

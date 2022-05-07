@@ -1,5 +1,4 @@
 async function handleSubmit(e) {
-	console.log("debug");
 	e.preventDefault();
 
 	const names = document
