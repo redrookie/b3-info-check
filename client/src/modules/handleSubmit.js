@@ -10,17 +10,18 @@ async function handleSubmit(e) {
 	const maxDate = new Date(
 		String(document.querySelectorAll("#date-max")[0].value)
 	);
-	const difference = Math.floor(
+	const differenceFromPresent = Math.floor(
 		(new Date().setHours(21) - minDate) / (1000 * 3600 * 24)
 	);
-	const outputSizeParam = difference > 100 ? "full" : "compact";
-	let classlist = document.querySelectorAll(".error-tooltip__wrapper")[0];
+	const differenceBetweenMaxAndMin = maxDate - minDate;
+	const outputSizeParam = differenceFromPresent > 100 ? "full" : "compact";
+	let classlist = document.querySelectorAll(".feedback-tooltip__wrapper")[0];
 
 	if (names.trim().split(" ").length > 5) {
-		classlist.className = "error-tooltip__wrapper full-list";
+		classlist.className = "feedback-tooltip__wrapper full-list";
 		return null;
-	} else if (difference < 0 || isNaN(difference)) {
-		classlist.className = "error-tooltip__wrapper wrong-date";
+	} else if (differenceBetweenMaxAndMin < 0 || isNaN(differenceFromPresent)) {
+		classlist.className = "feedback-tooltip__wrapper wrong-date";
 		return null;
 	} else {
 		let response = await fetch(`/api`, {
@@ -37,9 +38,7 @@ async function handleSubmit(e) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				classlist.className += " hide";
-				document.querySelectorAll(".after-message")[0].innerText =
-					"Enviado"; //TODO Voltar depois
+				classlist.className = "feedback-tooltip__wrapper success";
 				return res;
 			});
 		return response;

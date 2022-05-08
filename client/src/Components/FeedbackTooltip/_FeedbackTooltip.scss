@@ -1,4 +1,4 @@
-.error-tooltip__wrapper {
+.feedback-tooltip__wrapper {
 	position: absolute;
 	left: 100px;
 	top: 118px;
@@ -6,7 +6,7 @@
 	max-width: 280px;
 	background-color: dimgrey;
 	text-align: center;
-	padding: 5px;
+	padding: 10px;
 	font-size: 13px;
 	border-radius: 10px;
 	transition: opacity 0.3s, visibility 0.5s linear;
@@ -26,7 +26,12 @@
 	}
 	&.server-error {
 		p:after {
-			content: "Uma das requisições resultou em um erro do servidor. Provavelmente o limite de requisições foi estourado, aguarde um instante e tente novamente!";
+			content: "Uma ou mais requisições resultaram em um erro do servidor. Provavelmente o limite de requisições foi estourado, aguarde um instante e tente novamente!";
+		}
+	}
+	&.success {
+		p:after {
+			content: "Dados enviados com sucesso!";
 		}
 	}
 }

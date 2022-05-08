@@ -12,6 +12,7 @@ const InputTextBox = ({ value = "" }) => {
 				type="text"
 				id="assets_name"
 				required
+				placeholder="ex: BRFS3 BPAC11"
 			/>
 		</div>
 	);

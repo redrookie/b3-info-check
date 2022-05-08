@@ -53,9 +53,9 @@ const Graph = ({ value }) => {
 		if (!asset) return null;
 		if (!!asset["message"]) {
 			let classlist = document.querySelectorAll(
-				".error-tooltip__wrapper"
+				".feedback-tooltip__wrapper"
 			)[0];
-			classlist.className = "error-tooltip__wrapper server-error";
+			classlist.className = "feedback-tooltip__wrapper server-error";
 			return null;
 		}
 		return {

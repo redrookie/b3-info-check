@@ -1,6 +1,6 @@
 import "./_AssetsForm.scss";
 import PropTypes from "prop-types";
-import ErrorTooltip from "../ErrorTooltip";
+import FeedbackTooltip from "../FeedbackTooltip";
 
 const AssetsForm = ({ children, onSubmit }) => {
 	return (
@@ -8,7 +8,7 @@ const AssetsForm = ({ children, onSubmit }) => {
 			<form onSubmit={onSubmit} id="assets-form">
 				{children}
 			</form>
-			<ErrorTooltip></ErrorTooltip>
+			<FeedbackTooltip></FeedbackTooltip>
 		</div>
 	);
 };
