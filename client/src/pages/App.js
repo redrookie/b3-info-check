@@ -18,7 +18,7 @@ function App() {
 	}
 
 	const [value, setValue] = useState(null);
-	const [lightMode, setLightMode] = useState(true);
+	const [lightMode, setLightMode] = useState(false);
 	const [feedbackText, setFeedbackText] = useState("");
 
 	return (

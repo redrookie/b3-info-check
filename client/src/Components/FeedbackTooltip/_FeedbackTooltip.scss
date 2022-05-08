@@ -10,6 +10,11 @@
 	font-size: 13px;
 	border-radius: 10px;
 	transition: opacity 0.3s, visibility 0.5s linear;
+	@media screen and (max-width: 1024px) {
+		left: 20px;
+		top: -55px;
+		font-size: 11px;
+	}
 	&.hide {
 		opacity: 0;
 		visibility: hidden;

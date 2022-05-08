@@ -4,10 +4,17 @@
 	width: auto;
 	padding: 40px;
 	justify-content: center;
+	@media screen and (max-width: 1024px) {
+		top: 60px;
+	}
 	form {
 		height: fit-content;
 		width: auto;
-		display: grid;
+		display: flex;
+		text-align: justify;
+		@media screen and (max-width: 1024px) {
+			display: block;
+		}
 	}
 	form > * {
 		margin-left: 20px;
