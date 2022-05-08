@@ -34,9 +34,26 @@ function App() {
 					onSubmit={(e) => {
 						handleSubmit(e).then(function (result) {
 							if (!!result && result.status === 200) {
+								let errorInRequest = false;
+								result["data"] = result["data"].filter(
+									(elem) => {
+										if (!!elem["message"]) {
+											errorInRequest = true;
+											return false;
+										}
+										return true;
+									}
+								);
+								if (errorInRequest)
+									setFeedbackText(
+										"Uma ou mais requisições resultaram em erro. Verifique os nomes digitados! Também é possível que o limite de requisições tenha sido atingido. Aguarde um instante!"
+									);
+								else
+									setFeedbackText(
+										"Dados enviados com sucesso!"
+									);
 								console.log("result", result);
 								setValue(result);
-								setFeedbackText("Dados enviados com sucesso!");
 							} else {
 								console.log("ERRO", result);
 								setFeedbackText(result.message); //TODO Tratar melhor erros (ex: datas de dias não úteis)

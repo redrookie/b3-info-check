@@ -14,7 +14,11 @@ async function handleRequest(req, res) {
 			.then((res) => res.json())
 			.then((data) => {
 				if (!!data["Error Message"]) {
-					return null;
+					return {
+						message:
+							"Chamada inválida à API. Verifique os nomes digitados.",
+						status: 500,
+					};
 				} else {
 					const dataDaily = data["Time Series (Daily)"];
 					const minValidDate = findClosestValidDate(
