@@ -2,13 +2,13 @@ import "./_AssetsForm.scss";
 import PropTypes from "prop-types";
 import FeedbackTooltip from "../FeedbackTooltip";
 
-const AssetsForm = ({ children, onSubmit }) => {
+const AssetsForm = ({ children, onSubmit, feedbackText }) => {
 	return (
 		<div className="assets-form__wrapper">
 			<form onSubmit={onSubmit} id="assets-form">
 				{children}
 			</form>
-			<FeedbackTooltip></FeedbackTooltip>
+			<FeedbackTooltip text={feedbackText}></FeedbackTooltip>
 		</div>
 	);
 };
@@ -16,6 +16,7 @@ const AssetsForm = ({ children, onSubmit }) => {
 AssetsForm.propTypes = {
 	children: PropTypes.array,
 	onSubmit: PropTypes.func,
+	feedbackText: PropTypes.string,
 };
 
 export default AssetsForm;

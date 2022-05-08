@@ -19,10 +19,14 @@ async function handleSubmit(e) {
 
 	if (names.trim().split(" ").length > 5) {
 		classlist.className = "feedback-tooltip__wrapper full-list";
-		return null;
+		return { message: "Digite no máximo 5 ativos", status: 500 };
 	} else if (differenceBetweenMaxAndMin < 0 || isNaN(differenceFromPresent)) {
 		classlist.className = "feedback-tooltip__wrapper wrong-date";
-		return null;
+		return {
+			message:
+				"As datas digitadas foram inválidas. Selecione uma data final que seja maior que a data inicial!",
+			status: 500,
+		};
 	} else {
 		let response = await fetch(`/api`, {
 			headers: {

@@ -19,6 +19,7 @@ function App() {
 
 	const [value, setValue] = useState(null);
 	const [lightMode, setLightMode] = useState(true);
+	const [feedbackText, setFeedbackText] = useState("");
 
 	return (
 		<div className={`App ${lightMode ? "light-mode" : ""}`}>
@@ -35,11 +36,14 @@ function App() {
 							if (!!result && result.status === 200) {
 								console.log("result", result);
 								setValue(result);
+								setFeedbackText("Dados enviados com sucesso!");
 							} else {
-								console.log("ERRO", result); //Tratar melhor erros (ex: datas de dias não úteis)
+								console.log("ERRO", result);
+								setFeedbackText(result.message); //TODO Tratar melhor erros (ex: datas de dias não úteis)
 							}
 						});
 					}}
+					feedbackText={feedbackText}
 				>
 					<InputTextBox value="Digite aqui o nome dos ativos"></InputTextBox>
 					<InputDate
