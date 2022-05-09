@@ -1,7 +1,7 @@
 .feedback-tooltip__wrapper {
 	position: absolute;
 	left: 100px;
-	top: 118px;
+	top: 130px;
 	height: fit-content;
 	max-width: 280px;
 	background-color: dimgrey;
@@ -14,6 +14,7 @@
 		left: 20px;
 		top: -55px;
 		font-size: 11px;
+		max-width: 230px;
 	}
 	&.hide {
 		opacity: 0;

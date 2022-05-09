@@ -12,8 +12,10 @@
 		width: auto;
 		display: flex;
 		text-align: justify;
+		position: relative;
 		@media screen and (max-width: 1024px) {
 			display: block;
+			top: 15px;
 		}
 	}
 	form > * {
