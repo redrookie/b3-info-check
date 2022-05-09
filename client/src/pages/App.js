@@ -20,6 +20,7 @@ function App() {
 	const [value, setValue] = useState(null);
 	const [lightMode, setLightMode] = useState(false);
 	const [feedbackText, setFeedbackText] = useState("");
+	const [sendButtonText, setSendButtonText] = useState("Enviar");
 
 	return (
 		<div className={`App ${lightMode ? "light-mode" : ""}`}>
@@ -32,6 +33,7 @@ function App() {
 			<div className="div__form">
 				<AssetsForm
 					onSubmit={(e) => {
+						setSendButtonText("Enviando...");
 						handleSubmit(e).then(function (result) {
 							if (!!result && result.status === 200) {
 								let errorInRequest = false;
@@ -54,9 +56,11 @@ function App() {
 									);
 								console.log("result", result);
 								setValue(result);
+								setSendButtonText("Enviar");
 							} else {
 								console.log("ERRO", result);
 								setFeedbackText(result.message); //TODO Tratar melhor erros (ex: datas de dias não úteis)
+								setSendButtonText("Enviar");
 							}
 						});
 					}}
@@ -72,7 +76,7 @@ function App() {
 						value="Digite a data final do período"
 					></InputDate>
 				</AssetsForm>
-				<InputButton></InputButton>
+				<InputButton text={sendButtonText}></InputButton>
 				<p className="after-message">
 					A API utilizada é gratuita, por isso ela possui um limite de
 					5 chamadas por minuto, ou 500 por dia. ;)
