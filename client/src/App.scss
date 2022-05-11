@@ -19,7 +19,7 @@
 		width: 85%;
 		margin: 0 auto;
 	}
-	background-color: black;
+	background-color: #3b3837;
 	min-height: 100vh;
 	display: block;
 	align-items: center;
@@ -27,6 +27,16 @@
 	font-size: calc(10px + 2vmin);
 	color: white;
 	position: relative;
+	transition: background-color 0.5s linear;
+	label {
+		transition: color 0.5s linear;
+	}
+	&.light-mode {
+		background-color: white;
+		label {
+			color: black;
+		}
+	}
 }
 
 .App-logo {
