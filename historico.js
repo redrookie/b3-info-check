@@ -12,9 +12,16 @@ const Historico = sequelize.define(
 		},
 		Date: {
 			type: DATEONLY,
+			unique: "uniqueOccurrence",
+			allowNull: false,
 		},
 		Value: {
 			type: FLOAT,
+		},
+		idAtivo: {
+			type: INTEGER,
+			allowNull: false,
+			unique: "uniqueOccurrence",
 		},
 	},
 	{

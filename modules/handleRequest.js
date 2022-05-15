@@ -63,17 +63,17 @@ async function handleRequest(req, res) {
 									Value: elem["Value"],
 								};
 							});
-							Historico.bulkCreate(databaseData);
+							await Historico.bulkCreate(databaseData);
 						} catch (e) {
 							console.log("ERRO", e);
+						} finally {
+							return { name: name, data: processedData };
 						}
-						return { name: name, data: processedData };
 					}
 				});
 		});
 
 	let response = Promise.all(promises).then((result) => {
-		console.log("cacheResult", cacheResult);
 		return result;
 	});
 	return response;

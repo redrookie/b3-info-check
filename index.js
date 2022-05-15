@@ -34,7 +34,7 @@ app.listen(PORT, () => {
 			constraint: true,
 			foreignKey: "idAtivo",
 		});
-		const syncronize = await sequelize.sync();
+		await sequelize.sync();
 	} catch (error) {
 		console.log(error);
 	}

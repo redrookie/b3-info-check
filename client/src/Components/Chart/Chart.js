@@ -42,10 +42,9 @@ export const colors = [
 	"rgb(255, 255, 255)",
 ];
 
-const Graph = ({ value }) => {
+const Chart = ({ value }) => {
 	if (!value || !value.data[0]) return null;
 
-	console.log("cheguei no graph", value);
 	let dates = value.data[0]?.data?.map((date) => {
 		return date["Date"];
 	});
@@ -80,4 +79,4 @@ const Graph = ({ value }) => {
 	return <Line options={options} data={data} />;
 };
 
-export default Graph;
+export default Chart;

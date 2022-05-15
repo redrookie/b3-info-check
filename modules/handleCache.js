@@ -14,7 +14,17 @@ async function handleCache(name, dateMin, dateMax) {
 					idAtivo: ativo["id"],
 				},
 			});
-			return history;
+			const auxArr = {
+				name: ativo["nome"],
+				data: [],
+			};
+			auxArr.data = history.map((elem) => {
+				return {
+					Date: elem["Date"],
+					Value: elem["Value"],
+				};
+			});
+			return auxArr;
 		} catch (e) {
 			console.log("ERRO", e);
 		}

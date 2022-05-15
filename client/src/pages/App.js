@@ -5,7 +5,7 @@ import AssetsForm from "../Components/AssetsForm";
 import InputDate from "../Components/InputDate";
 import InputButton from "../Components/InputButton/InputButton";
 import handleSubmit from "../modules/handleSubmit";
-import Graph from "../Components/Graph/Graph";
+import Chart from "../Components/Chart/Chart";
 import DarkModeSwitch from "../Components/DarkModeSwitch";
 
 function App() {
@@ -83,7 +83,7 @@ function App() {
 				</p>
 			</div>
 			<div className="div__graph">
-				<Graph value={value}></Graph>
+				<Chart value={value}></Chart>
 			</div>
 		</div>
 	);
