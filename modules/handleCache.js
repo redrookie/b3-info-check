@@ -1,5 +1,6 @@
 import Ativo from "../ativo.js";
 import Historico from "../historico.js";
+import { Op } from "sequelize";
 
 async function handleCache(name, dateMin, dateMax) {
 	const ativo = await Ativo.findOne({
@@ -12,8 +13,18 @@ async function handleCache(name, dateMin, dateMax) {
 			const history = await Historico.findAll({
 				where: {
 					idAtivo: ativo["id"],
+					Date: {
+						[Op.between]: [dateMin, dateMax],
+					},
 				},
+				order: [["Date", "ASC"]],
 			});
+
+			if (history[0]["Date"] !== dateMin.toISOString().split("T")[0]) {
+				//Caso a data minima não exista no cache, e possivel que o cache seja "antigo"
+				return null;
+			}
+
 			const auxArr = {
 				name: ativo["nome"],
 				data: [],

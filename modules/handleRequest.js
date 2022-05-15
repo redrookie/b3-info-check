@@ -5,25 +5,28 @@ import handleCache from "./handleCache.js";
 import Ativo from "../ativo.js";
 import Historico from "../historico.js";
 
+function buildQueryUrl(name, size) {
+	return `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`;
+}
+
+async function filterCache(elem, minDate, maxDate) {
+	let cache = await handleCache(elem, minDate, maxDate);
+	if (!!cache) {
+		cacheResult.push(cache);
+		return false;
+	} else return true;
+}
+
 async function handleRequest(req, res) {
 	const nomesArray = req.body.nomes.split(" ");
 	const minDate = new Date(req.body.minDate);
 	const maxDate = new Date(req.body.maxDate);
 	const size = req.body.size;
-	let cache;
 	let cacheResult = [];
 	let promises = nomesArray
-		.filter(async (elem) => {
-			cache = await handleCache(elem, minDate, maxDate);
-			if (!!cache) {
-				cacheResult.push(cache);
-				return false;
-			} else return true;
-		})
+		.filter(async (elem) => await filterCache(elem, minDate, maxDate))
 		.map(async (name) => {
-			return fetch(
-				`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`
-			)
+			return fetch(buildQueryUrl(name, size))
 				.then((res) => res.json())
 				.then(async (data) => {
 					if (!!data["Error Message"]) {
@@ -41,7 +44,7 @@ async function handleRequest(req, res) {
 						);
 						if (minValidDate === null) {
 							return {
-								message: "Não há data mínima no périodo",
+								message: "Não há data mínima no período",
 								status: 500,
 							};
 						}
