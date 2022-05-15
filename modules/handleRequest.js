@@ -13,7 +13,7 @@ function buildQueryUrl(name, size) {
 
 async function filterCache(elem, minDate, maxDate) {
 	let cache = await handleCache(elem, minDate, maxDate);
-	if (!!cache["name"]) {
+	if (!!cache) {
 		cacheResult.push(cache);
 		console.log("Achei cache", cacheResult);
 		return false;

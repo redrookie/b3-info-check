@@ -10,11 +10,13 @@ async function handleCache(name, dateMin, dateMax) {
 	});
 	if (!!ativo) {
 		try {
+			let auxDate = new Date();
+			auxDate.setDate(dateMax.getDate() + 1);
 			const history = await Historico.findAll({
 				where: {
 					idAtivo: ativo["id"],
 					Date: {
-						[Op.between]: [dateMin, dateMax],
+						[Op.between]: [dateMin, auxDate],
 					},
 				},
 				order: [["Date", "ASC"]],
