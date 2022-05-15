@@ -1,7 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { dataMock } from "./mocks.js";
 import handleRequest from "./modules/handleRequest.js";
+import sequelize from "./db.js";
+import Ativo from "./ativo.js";
+import Historico from "./historico.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -22,3 +24,18 @@ app.post("/api", async (req, res) => {
 app.listen(PORT, () => {
 	console.log(`Alto e claro na porta ${PORT}`);
 });
+
+(async () => {
+	try {
+		Ativo.hasMany(Historico, {
+			foreignKey: "idAtivo",
+		});
+		Historico.belongsTo(Ativo, {
+			constraint: true,
+			foreignKey: "idAtivo",
+		});
+		const syncronize = await sequelize.sync();
+	} catch (error) {
+		console.log(error);
+	}
+})();
