@@ -13,7 +13,7 @@ function buildQueryUrl(name, size) {
 
 async function filterCache(elem, minDate, maxDate) {
 	let cache = await handleCache(elem, minDate, maxDate);
-	if (!!cache) {
+	if (!!cache["name"]) {
 		cacheResult.push(cache);
 		console.log("Achei cache", cacheResult);
 		return false;
@@ -79,6 +79,10 @@ async function handleRequest(req, res) {
 		});
 
 	let response = Promise.all(promises).then((result) => {
+		// cacheResult.forEach((elem) => {
+		// 	result.push(elem);
+		// });
+		// cacheResult = [];
 		return result;
 	});
 	return response;

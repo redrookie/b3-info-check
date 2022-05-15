@@ -20,8 +20,13 @@ async function handleCache(name, dateMin, dateMax) {
 				order: [["Date", "ASC"]],
 			});
 
-			if (history[0]["Date"] !== dateMin.toISOString().split("T")[0]) {
-				//Caso a data minima não exista no cache, e possivel que o cache seja "antigo"
+			if (
+				history[0]["Date"] !== dateMin.toISOString().split("T")[0] ||
+				history[history.length - 1]["Date"] !==
+					dateMax.toISOString().split("T")[0]
+			) {
+				//Caso a data minima não exista no cache, e possivel que o cache nao esteja preenchido ate aquele ponto
+				//Caso a data maxima nao exista, e possivel que o cache esteja desatualizado
 				return null;
 			}
 
