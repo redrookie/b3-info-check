@@ -5,6 +5,8 @@ import handleCache from "./handleCache.js";
 import Ativo from "../ativo.js";
 import Historico from "../historico.js";
 
+let cacheResult = [];
+
 function buildQueryUrl(name, size) {
 	return `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`;
 }
@@ -13,6 +15,7 @@ async function filterCache(elem, minDate, maxDate) {
 	let cache = await handleCache(elem, minDate, maxDate);
 	if (!!cache) {
 		cacheResult.push(cache);
+		console.log("Achei cache", cacheResult);
 		return false;
 	} else return true;
 }
@@ -22,7 +25,6 @@ async function handleRequest(req, res) {
 	const minDate = new Date(req.body.minDate);
 	const maxDate = new Date(req.body.maxDate);
 	const size = req.body.size;
-	let cacheResult = [];
 	let promises = nomesArray
 		.filter(async (elem) => await filterCache(elem, minDate, maxDate))
 		.map(async (name) => {
