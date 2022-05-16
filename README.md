@@ -11,6 +11,6 @@ Aplicação foi desenvolvida utilizando a última versão do node estável, a 16
 
 Após instalar o node, as dependências devem ser instaladas executando `npm install` na raiz do projeto
 
-Para rodar o projeto, execute `npm run dev`, na raiz do projeto. Isso irá executar o backend e o frontend simultaneamente. 
+Para rodar o projeto, execute `npm run dev` na raiz. Isso irá executar o backend e o frontend simultaneamente. 
 
-O backend foi escrito em node e express, o frontend em react e javascript.
+O backend foi escrito em node e express; o frontend em react e javascript.
