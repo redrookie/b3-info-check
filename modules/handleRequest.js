@@ -60,7 +60,9 @@ async function handleRequest(req, res) {
 									Value: elem["Value"],
 								};
 							});
-							await Historico.bulkCreate(databaseData);
+							await Historico.bulkCreate(databaseData, {
+								updateOnDuplicate: ["Date"],
+							});
 						} catch (e) {
 							console.error(e);
 						} finally {
