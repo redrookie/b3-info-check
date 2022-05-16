@@ -17,6 +17,7 @@ app.post("/api", async (req, res) => {
 		let dataRequest = await handleRequest(req, res);
 		res.json({ data: dataRequest, status: 200 });
 	} catch (err) {
+		console.error(err);
 		res.json({ message: "Erro na requisição", status: 500 });
 	}
 });
@@ -36,6 +37,6 @@ app.listen(PORT, () => {
 		});
 		await sequelize.sync();
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 	}
 })();

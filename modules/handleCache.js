@@ -10,13 +10,15 @@ async function handleCache(name, dateMin, dateMax) {
 	});
 	if (!!ativo) {
 		try {
-			let auxDate = new Date();
-			auxDate.setDate(dateMax.getDate() + 1);
+			let auxMinDate = new Date(dateMin.toISOString().split("T")[0]);
+			auxMinDate.setDate(auxMinDate.getDate() + 1);
+			let auxMaxDate = new Date(dateMax.toISOString().split("T")[0]);
+			auxMaxDate.setDate(auxMaxDate.getDate() + 1);
 			const history = await Historico.findAll({
 				where: {
 					idAtivo: ativo["id"],
 					Date: {
-						[Op.between]: [dateMin, auxDate],
+						[Op.between]: [auxMinDate, auxMaxDate],
 					},
 				},
 				order: [["Date", "ASC"]],
@@ -29,6 +31,20 @@ async function handleCache(name, dateMin, dateMax) {
 			) {
 				//Caso a data minima não exista no cache, e possivel que o cache nao esteja preenchido ate aquele ponto
 				//Caso a data maxima nao exista, e possivel que o cache esteja desatualizado
+				console.log("Datas invalidas");
+				console.log("data min no historico", history[0]["Date"]);
+				console.log(
+					"data min na comp",
+					dateMin.toISOString().split("T")[0]
+				);
+				console.log(
+					"data max no hist",
+					history[history.length - 1]["Date"]
+				);
+				console.log(
+					"data max na comp",
+					dateMax.toISOString().split("T")[0]
+				);
 				return null;
 			}
 
@@ -44,7 +60,7 @@ async function handleCache(name, dateMin, dateMax) {
 			});
 			return auxArr;
 		} catch (e) {
-			console.log("ERRO", e);
+			console.error(e);
 		}
 	} else {
 		Ativo.create({

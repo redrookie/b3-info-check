@@ -5,29 +5,21 @@ import handleCache from "./handleCache.js";
 import Ativo from "../ativo.js";
 import Historico from "../historico.js";
 
-let cacheResult = [];
-
 function buildQueryUrl(name, size) {
 	return `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`;
 }
 
-async function filterCache(elem, minDate, maxDate) {
-	let cache = await handleCache(elem, minDate, maxDate);
-	if (!!cache) {
-		cacheResult.push(cache);
-		console.log("Achei cache", cacheResult);
-		return false;
-	} else return true;
-}
-
 async function handleRequest(req, res) {
 	const nomesArray = req.body.nomes.split(" ");
-	const minDate = new Date(req.body.minDate);
-	const maxDate = new Date(req.body.maxDate);
+	const minDate = new Date(String(req.body.minDate).replace("/-/g", "/"));
+	const maxDate = new Date(String(req.body.maxDate).replace("/-/g", "/"));
 	const size = req.body.size;
-	let promises = nomesArray
-		.filter(async (elem) => await filterCache(elem, minDate, maxDate))
-		.map(async (name) => {
+	let promises = nomesArray.map(async (name) => {
+		let cache = await handleCache(name, minDate, maxDate);
+		if (!!cache) {
+			console.log("cache encontrado\n");
+			return cache;
+		} else {
 			return fetch(buildQueryUrl(name, size))
 				.then((res) => res.json())
 				.then(async (data) => {
@@ -70,19 +62,16 @@ async function handleRequest(req, res) {
 							});
 							await Historico.bulkCreate(databaseData);
 						} catch (e) {
-							console.log("ERRO", e);
+							console.error(e);
 						} finally {
 							return { name: name, data: processedData };
 						}
 					}
 				});
-		});
+		}
+	});
 
 	let response = Promise.all(promises).then((result) => {
-		// cacheResult.forEach((elem) => {
-		// 	result.push(elem);
-		// });
-		// cacheResult = [];
 		return result;
 	});
 	return response;

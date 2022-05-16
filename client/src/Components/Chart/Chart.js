@@ -37,7 +37,7 @@ const options = {
 export const colors = [
 	"rgb(253, 162, 235)",
 	"rgb(249, 18, 18)",
-	"rgb(253, 162, 235)",
+	"rgb(25, 162, 255)",
 	"rgb(20, 19, 19)",
 	"rgb(255, 255, 255)",
 ];
@@ -74,8 +74,6 @@ const Chart = ({ value }) => {
 		labels: dates,
 		datasets: datasets,
 	};
-	console.log("datasets", datasets);
-	console.log("data", data);
 	return <Line options={options} data={data} />;
 };
 

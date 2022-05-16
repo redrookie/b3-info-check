@@ -54,11 +54,10 @@ function App() {
 									setFeedbackText(
 										"Dados enviados com sucesso!"
 									);
-								console.log("result", result);
 								setValue(result);
 								setSendButtonText("Enviar");
 							} else {
-								console.log("ERRO", result);
+								console.error(result);
 								setFeedbackText(result.message); //TODO Tratar melhor erros (ex: datas de dias não úteis)
 								setSendButtonText("Enviar");
 							}
