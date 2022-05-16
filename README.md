@@ -1,5 +1,5 @@
 # b3-info-check
-> Aplicação Web que mostra o valor de no máximo 5 ativos, por limitações da API, da bolsa de valores em um determinado período.
+> Aplicação Web que mostra o valor de no máximo 5 ativos, por limitações da API, da b3 em um determinado período.
 
 ### Regras de negócio e funcionamento geral
 
