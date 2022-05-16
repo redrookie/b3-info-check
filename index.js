@@ -4,6 +4,7 @@ import handleRequest from "./modules/handleRequest.js";
 import sequelize from "./db.js";
 import Ativo from "./ativo.js";
 import Historico from "./historico.js";
+import "dotenv/config";
 
 const PORT = process.env.PORT || 3001;
 

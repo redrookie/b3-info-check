@@ -6,7 +6,7 @@ import Ativo from "../ativo.js";
 import Historico from "../historico.js";
 
 function buildQueryUrl(name, size) {
-	return `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.REACT_APP_API_KEY}`;
+	return `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${name}.SA&outputsize=${size}&apikey=${process.env.API_KEY}`;
 }
 
 async function handleRequest(req, res) {
